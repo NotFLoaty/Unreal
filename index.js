@@ -147,7 +147,9 @@ app.get("/api/particles", (req, res) => {
 
 // All admin API routes have been removed
 // Themes and particles are now freely available without login requirements
-
+app.get("/search", (req, res) => {
+  res.sendFile(path.join(__dirname, "static", "search.html"));
+});
 app.use(express.static(path.join(__dirname, "static")));
 app.use("/fq", cors({ origin: true }));
 
