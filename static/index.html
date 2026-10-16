@@ -1,10 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#090b10">
+  <meta name="description" content="UNREAL — explore games, apps, and the web.">
   <title>UNREAL</title>
 
   <link rel="icon" href="assets/favicon/google.ico">
@@ -16,12 +16,13 @@
     :root {
       color-scheme: dark;
       --bg: #090b10;
-      --surface: #10131b;
-      --surface-hover: #151a25;
+      --surface: #10141e;
+      --surface-hover: #161d2b;
       --blue: #438dff;
+      --blue-light: #85b6ff;
       --text: #f5f7fb;
       --muted: #8992a4;
-      --border: rgba(255,255,255,.075);
+      --border: rgba(255,255,255,.08);
     }
 
     * {
@@ -46,8 +47,15 @@
       text-decoration: none;
     }
 
-    button {
+    button,
+    input {
       font: inherit;
+    }
+
+    button,
+    a,
+    input {
+      -webkit-tap-highlight-color: transparent;
     }
 
     .ambient {
@@ -61,15 +69,15 @@
     .ambient::before {
       content: "";
       position: absolute;
-      width: 850px;
-      height: 650px;
-      top: -370px;
+      top: -380px;
       left: 50%;
+      width: 950px;
+      height: 720px;
       transform: translateX(-50%);
       background: radial-gradient(
         ellipse,
-        rgba(35,111,255,.19),
-        rgba(35,111,255,.035) 45%,
+        rgba(35,111,255,.2),
+        rgba(35,111,255,.045) 45%,
         transparent 70%
       );
     }
@@ -77,13 +85,13 @@
     .ambient::after {
       content: "";
       position: absolute;
-      width: 550px;
-      height: 550px;
-      right: -350px;
-      top: 40%;
+      right: -300px;
+      bottom: -250px;
+      width: 650px;
+      height: 650px;
       background: radial-gradient(
         circle,
-        rgba(83,55,190,.09),
+        rgba(65,75,200,.1),
         transparent 70%
       );
     }
@@ -94,13 +102,13 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      height: 72px;
-      padding: 0 max(24px, calc((100% - 1160px) / 2));
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
-      background: rgba(9,11,16,.78);
+      gap: 20px;
+      height: 72px;
+      padding: 0 max(24px, calc((100% - 1160px) / 2));
+      background: rgba(9,11,16,.82);
       border-bottom: 1px solid var(--border);
       backdrop-filter: blur(22px);
       -webkit-backdrop-filter: blur(22px);
@@ -109,7 +117,7 @@
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 11px;
+      gap: 10px;
       font-size: 20px;
       font-weight: 800;
       letter-spacing: -1px;
@@ -117,15 +125,13 @@
     }
 
     .brand-mark {
-      width: 31px;
-      height: 31px;
       display: grid;
       place-items: center;
+      width: 32px;
+      height: 32px;
       border-radius: 10px;
       background: linear-gradient(145deg, #65a6ff, #1763e8);
-      color: white;
-      font-size: 17px;
-      box-shadow: 0 3px 18px rgba(43,123,255,.23);
+      box-shadow: 0 3px 20px rgba(43,123,255,.25);
     }
 
     .brand-name span {
@@ -135,34 +141,34 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 5px;
     }
 
     .nav-link {
-      padding: 10px 14px;
+      padding: 10px 13px;
+      border: 1px solid transparent;
       border-radius: 9px;
       color: var(--muted);
       font-size: 13px;
-      font-weight: 500;
-      transition: background .2s, color .2s;
+      transition: .2s ease;
     }
 
     .nav-link:hover,
     .nav-link.active {
-      background: rgba(255,255,255,.055);
       color: var(--text);
+      background: rgba(255,255,255,.05);
     }
 
     .nav-link.active {
-      color: #8bbaff;
+      color: var(--blue-light);
     }
 
-    /* Main hero */
+    /* Hero */
 
     .hero {
       max-width: 1160px;
       margin: 0 auto;
-      padding: 116px 24px 80px;
+      padding: 112px 24px 82px;
       text-align: center;
     }
 
@@ -171,29 +177,28 @@
       align-items: center;
       gap: 9px;
       padding: 8px 12px;
-      border: 1px solid rgba(94,151,255,.19);
+      border: 1px solid rgba(94,151,255,.2);
       border-radius: 999px;
-      background: rgba(39,101,208,.075);
+      background: rgba(39,101,208,.08);
       color: #a6c8ff;
       font-size: 10px;
       font-weight: 600;
       letter-spacing: 1.7px;
-      text-transform: uppercase;
     }
 
     .eyebrow-dot {
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: #438dff;
-      box-shadow: 0 0 12px #438dff;
+      background: var(--blue);
+      box-shadow: 0 0 12px var(--blue);
     }
 
     .hero h1 {
-      margin: 28px 0 0;
-      font-size: clamp(68px, 11vw, 116px);
-      line-height: .98;
+      margin: 27px 0 0;
+      font-size: clamp(70px, 12vw, 118px);
       font-weight: 800;
+      line-height: .98;
       letter-spacing: -.095em;
     }
 
@@ -202,12 +207,11 @@
     }
 
     .tagline {
-      min-height: 29px;
-      margin: 24px 0 0;
+      min-height: 27px;
+      margin: 22px 0 0;
       color: #a4adbd;
       font-size: clamp(14px, 2vw, 17px);
-      letter-spacing: -.2px;
-      transition: opacity .25s ease, transform .25s ease;
+      transition: opacity .25s, transform .25s;
     }
 
     .tagline.fading {
@@ -215,9 +219,93 @@
       transform: translateY(4px);
     }
 
+    /* Search */
+
+    .web-search {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: min(100%, 640px);
+      min-height: 64px;
+      margin: 34px auto 0;
+      padding: 7px 8px 7px 20px;
+      background: rgba(17,22,33,.92);
+      border: 1px solid rgba(106,153,255,.23);
+      border-radius: 17px;
+      box-shadow:
+        0 12px 45px rgba(0,0,0,.23),
+        0 0 35px rgba(35,111,255,.055);
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    .web-search:focus-within {
+      border-color: rgba(67,141,255,.8);
+      box-shadow:
+        0 0 0 4px rgba(67,141,255,.08),
+        0 12px 45px rgba(0,0,0,.25);
+    }
+
+    .search-icon {
+      flex-shrink: 0;
+      color: var(--blue-light);
+      font-size: 25px;
+      line-height: 1;
+    }
+
+    .web-search input {
+      flex: 1;
+      width: 0;
+      min-width: 0;
+      padding: 12px 0;
+      outline: none;
+      border: 0;
+      background: transparent;
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .web-search input::placeholder {
+      color: #778297;
+    }
+
+    .web-search input::-webkit-search-cancel-button {
+      cursor: pointer;
+    }
+
+    .search-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 46px;
+      padding: 0 18px;
+      border: 1px solid rgba(120,170,255,.35);
+      border-radius: 11px;
+      background: #2678f5;
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+
+    .search-button:hover {
+      background: #438dff;
+    }
+
+    .search-button:active {
+      transform: scale(.98);
+    }
+
+    .search-hint {
+      margin: 13px 0 0;
+      color: #657086;
+      font-size: 11px;
+    }
+
     .hero-description {
       max-width: 410px;
-      margin: 15px auto 0;
+      margin: 26px auto 0;
       color: #737d90;
       font-size: 13px;
       line-height: 1.9;
@@ -228,19 +316,19 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 34px;
+      margin-top: 28px;
     }
 
     .button {
       display: inline-flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       gap: 10px;
-      min-height: 45px;
-      padding: 0 19px;
+      min-height: 44px;
+      padding: 0 17px;
       border: 1px solid var(--border);
       border-radius: 11px;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
       transition: transform .2s, background .2s, border-color .2s;
     }
@@ -252,8 +340,7 @@
     .button-primary {
       background: #2678f5;
       border-color: #438dff;
-      color: white;
-      box-shadow: 0 5px 25px rgba(38,120,245,.17);
+      box-shadow: 0 5px 25px rgba(38,120,245,.16);
     }
 
     .button-primary:hover {
@@ -270,21 +357,12 @@
       border-color: rgba(255,255,255,.15);
     }
 
-    .arrow {
-      font-size: 16px;
-      transition: transform .2s;
-    }
-
-    .button:hover .arrow {
-      transform: translateX(3px);
-    }
-
-    /* Explore section */
+    /* Explore cards */
 
     .explore {
       max-width: 1160px;
       margin: 0 auto;
-      padding: 12px 24px 100px;
+      padding: 12px 24px 90px;
     }
 
     .section-heading {
@@ -301,13 +379,11 @@
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 1.8px;
-      text-transform: uppercase;
     }
 
     .section-heading h2 {
       margin: 0;
       font-size: 24px;
-      font-weight: 700;
       letter-spacing: -1px;
     }
 
@@ -334,56 +410,36 @@
       position: relative;
       display: flex;
       flex-direction: column;
-      min-height: 235px;
+      min-height: 225px;
       padding: 23px;
       overflow: hidden;
       border: 1px solid var(--border);
       border-radius: 17px;
-      background: linear-gradient(
-        145deg,
-        rgba(20,25,36,.96),
-        rgba(13,16,23,.96)
-      );
-      transition: transform .22s, border-color .22s, background .22s;
+      background: linear-gradient(145deg, #141924, #0d1017);
+      transition: transform .22s, border-color .22s;
     }
 
     .card:hover {
       transform: translateY(-3px);
-      border-color: rgba(91,151,255,.3);
-      background: linear-gradient(
-        145deg,
-        rgba(24,32,47,.98),
-        rgba(13,16,23,.98)
-      );
+      border-color: rgba(91,151,255,.32);
     }
 
     .card-art {
       position: absolute;
-      width: 180px;
-      height: 180px;
       top: -65px;
       right: -45px;
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
-      opacity: .75;
       pointer-events: none;
     }
 
     .games-art {
-      background: radial-gradient(
-        circle,
-        rgba(40,121,255,.2),
-        rgba(40,121,255,.02) 65%,
-        transparent 70%
-      );
+      background: radial-gradient(circle, rgba(40,121,255,.2), transparent 70%);
     }
 
     .apps-art {
-      background: radial-gradient(
-        circle,
-        rgba(136,95,255,.18),
-        rgba(136,95,255,.02) 65%,
-        transparent 70%
-      );
+      background: radial-gradient(circle, rgba(136,95,255,.18), transparent 70%);
     }
 
     .card-icon {
@@ -393,7 +449,7 @@
       place-items: center;
       width: 44px;
       height: 44px;
-      margin-bottom: 30px;
+      margin-bottom: 27px;
       border: 1px solid rgba(255,255,255,.09);
       border-radius: 13px;
       background: rgba(255,255,255,.045);
@@ -435,14 +491,6 @@
       font-weight: 600;
     }
 
-    .card-link span {
-      transition: transform .2s;
-    }
-
-    .card:hover .card-link span {
-      transform: translateX(4px);
-    }
-
     /* Footer */
 
     .footer {
@@ -451,21 +499,19 @@
     }
 
     .footer-inner {
-      max-width: 1160px;
-      min-height: 76px;
-      margin: 0 auto;
-      padding: 20px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 18px;
+      max-width: 1160px;
+      min-height: 76px;
+      margin: 0 auto;
+      padding: 20px 24px;
     }
 
     .footer-brand {
-      color: #b6bfce;
       font-size: 12px;
       font-weight: 700;
-      letter-spacing: -.3px;
     }
 
     .footer-brand span {
@@ -477,54 +523,62 @@
       font-size: 11px;
     }
 
-    @media (min-width: 1500px) {
-      .hero {
-        padding-top: 145px;
-        padding-bottom: 100px;
-      }
-    }
+    /* Responsive */
 
     @media (max-width: 600px) {
       .navbar {
         height: 64px;
-        padding: 0 17px;
-        gap: 10px;
+        padding: 0 15px;
+        gap: 8px;
       }
 
       .brand {
-        gap: 8px;
-        font-size: 17px;
+        gap: 7px;
+        font-size: 16px;
       }
 
       .brand-mark {
-        width: 28px;
-        height: 28px;
-        font-size: 15px;
+        width: 27px;
+        height: 27px;
+        font-size: 14px;
       }
 
       .nav-links {
-        gap: 1px;
+        gap: 0;
       }
 
       .nav-link {
-        padding: 9px 8px;
+        padding: 9px 7px;
         font-size: 11px;
       }
 
       .hero {
-        padding: 105px 22px 85px;
+        padding: 92px 19px 72px;
       }
 
       .hero h1 {
         font-size: clamp(64px, 15vw, 88px);
       }
 
-      .hero-description {
-        max-width: 330px;
+      .web-search {
+        gap: 9px;
+        min-height: 58px;
+        padding-left: 13px;
+        border-radius: 14px;
+      }
+
+      .web-search input {
+        font-size: 13px;
+      }
+
+      .search-button {
+        min-height: 42px;
+        padding: 0 12px;
+        font-size: 11px;
       }
 
       .explore {
-        padding: 5px 18px 70px;
+        padding: 5px 18px 65px;
       }
 
       .section-heading h2 {
@@ -541,7 +595,7 @@
       }
 
       .card {
-        min-height: 215px;
+        min-height: 210px;
       }
 
       .footer-inner {
@@ -550,8 +604,11 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
+      *,
+      *::before,
+      *::after {
         scroll-behavior: auto !important;
+        animation: none !important;
         transition: none !important;
       }
     }
@@ -587,6 +644,28 @@
         You didn't hear it from us.
       </p>
 
+      <form
+        class="web-search"
+        action="https://www.google.com/search"
+        method="GET"
+        role="search"
+      >
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input
+          type="search"
+          name="q"
+          placeholder="Search the web..."
+          aria-label="Search the web"
+          autocomplete="off"
+          required
+        >
+        <button class="search-button" type="submit">
+          Search <span aria-hidden="true">↗</span>
+        </button>
+      </form>
+
+      <p class="search-hint">Search the web directly from UNREAL.</p>
+
       <p class="hero-description">
         Your next favorite thing might be one click away.
         Have a look around.
@@ -594,10 +673,10 @@
 
       <div class="hero-actions">
         <a href="/up" class="button button-primary">
-          Explore games <span class="arrow">↗</span>
+          Explore games <span aria-hidden="true">↗</span>
         </a>
         <a href="/yz" class="button button-secondary">
-          Browse apps <span class="arrow">→</span>
+          Browse apps <span aria-hidden="true">→</span>
         </a>
       </div>
     </section>
@@ -616,27 +695,19 @@
 
       <div class="cards">
         <a href="/up" class="card">
-          <div class="card-art games-art"></div>
+          <div class="card-art games-art" aria-hidden="true"></div>
           <div class="card-icon" aria-hidden="true">▣</div>
           <h3>Games</h3>
-          <p>
-            Find something new to play and see what's waiting.
-          </p>
-          <span class="card-link">
-            Explore games <span>→</span>
-          </span>
+          <p>Find something new to play and see what's waiting.</p>
+          <span class="card-link">Explore games <span>→</span></span>
         </a>
 
         <a href="/yz" class="card apps-card">
-          <div class="card-art apps-art"></div>
+          <div class="card-art apps-art" aria-hidden="true"></div>
           <div class="card-icon" aria-hidden="true">✳</div>
           <h3>Apps</h3>
-          <p>
-            Discover tools and explore a different side of the web.
-          </p>
-          <span class="card-link">
-            Explore apps <span>→</span>
-          </span>
+          <p>Discover tools and explore a different side of the web.</p>
+          <span class="card-link">Explore apps <span>→</span></span>
         </a>
       </div>
     </section>
